@@ -1,0 +1,10 @@
+<!doctype html>
+<title>List of persons</title>
+{% if topic %}
+    <h1>All results for {{ topic }}</h1>
+{% endif %}
+{% for person in persons %}
+    <h2>{{ person.name }}</h2>
+    <h3>{{ person.email }}</h3>
+    <h3>{{ person.topics }}</h3>
+{% endfor %}
