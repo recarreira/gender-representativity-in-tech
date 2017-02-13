@@ -1,10 +1,38 @@
 <!doctype html>
-<title>List of persons</title>
-{% if topic %}
-    <h1>All results for {{ topic }}</h1>
-{% endif %}
-{% for person in persons %}
-    <h2>{{ person.name }}</h2>
-    <h3>{{ person.email }}</h3>
-    <h3>{{ person.topics }}</h3>
-{% endfor %}
+<html>
+  <head>
+    <title>List of persons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+    {% if topic %}
+        <h1>Women who wants to talk about {{ topic }}</h1>
+    {% endif %}
+    <div class="container">
+      <div class="row">
+        {% for person in persons %}
+          <div class="col-md-4">
+            <h2>{{ person.name }}</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <img data-src="holder.js/150x150" class="img-thumbnail" alt="imagem" src="http://placehold.it/150x150" data-holder-rendered="true" style="width: 150px; height: 150px;">
+              </div>
+              <div class="col-md-6">
+                <ul class="list-group">
+                  {% for topic in person.topics %}
+                  <li class="list-group-item">{{ topic }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
